@@ -6,14 +6,16 @@ type Props = {
 };
 
 export function Groups({ filters }: Props) {
+  console.log(filters);
   const dataReq = useGroupsQuery({
     _: "Update this object to pass data to the /groups endpoint.",
-    filters,
+    filters: [],
   });
 
   if (dataReq.isLoading || !dataReq.data) {
+    console.log(dataReq);
     return <div>Loading...</div>;
   }
 
-  return <GroupsDataTable data={dataReq.data.data} />;
+  return <GroupsDataTable data={dataReq.data!.data} />;
 }

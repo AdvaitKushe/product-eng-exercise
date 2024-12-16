@@ -1,7 +1,10 @@
 import { DataTable } from "./DataTable";
 import { FeedbackData } from "../hooks";
 
+
 export function FeedbackDataTable({ data }: { data: FeedbackData }) {
+  
+
   return (
     <DataTable
       fullWidth

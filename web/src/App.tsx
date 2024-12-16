@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState} from "react";
 import { NavTabs, TabConfig } from "./components/NavTabs";
 import { Feedback } from "./Feedback";
 import { Groups } from "./Groups";
+import { Filter } from "./components/Filter";
 
 export const TabsConfig: TabConfig = {
   feedback: {
@@ -16,6 +17,8 @@ export const TabsConfig: TabConfig = {
 
 function App() {
   const [selectedTab, setSelectedTab] = useState("feedback");
+  const [selectedFilters, setSelectedFilters] = useState({});
+
 
   return (
     <div className="w-screen h-screen flex items-center justify-center">
@@ -31,10 +34,13 @@ function App() {
         {/**
          * TODO(part-1): Add filter options
          */}
+
+        <Filter onChange={(filt) => setSelectedFilters(filt)} />
+
         {selectedTab === "feedback" ? (
-          <Feedback filters={{}} />
+          <Feedback filters={selectedFilters} />
         ) : (
-          <Groups filters={{}} />
+          <Groups filters={selectedFilters} />
         )}
       </div>
     </div>
